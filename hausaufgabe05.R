@@ -74,7 +74,7 @@ print( weight.grafik.basis + geom_density(aes(color=sex,fill=sex),alpha=0.5) )
 # auch Größe anschauen. Sind die Studenten mancher Studiengänge größer als die anderen?
 # Weil wir deutlich weniger Männer haben und es einen bekannten Unterschied in der Größe 
 # zwischen Männern und Frauen gibt, schließen wir erstmal die Männer aus:
-frauen <- subset(dat, CODE_HIER)
+frauen <- subset(dat, sex=="f")
 
 # (Sie sollten sich wirklich überlegen, ob der Schritt "gut" ist. Haben wir 
 # dadurch unsre Ergebnisse verstellt? Sie müssen hier nichts schreiben, aber 
@@ -87,7 +87,8 @@ frauen <- subset(dat, CODE_HIER)
 #falls Sie unsicher sind, ob das Bild korrekt aussieht.) Hier und im Folgenden
 #sollten Sie die Plots so machen, damit man einen Vergleich zwischen den Gruppen
 #ziehen kann. Dafür gibt es verschiedene Möglichkeiten; die Wahl bleibt Ihnen
-#überlassen. 
+#überlassen. height.grafik.basis <- ggplot(data=frauen,aes(x=height))
+
 height.grafik.basis <- ggplot(data=frauen,aes(x=major))
 frauen.studiengang.bw <- height.grafik.basis + geom_boxplot(aes(x=major,y=height))
 print(frauen.studiengang.bw)
@@ -137,15 +138,16 @@ speech <- frauen[frauen$major == "M.A..Speech.Science",
 # ist. 
 # HINT: Formel und Beispiel für die Berechnung auf den Folien!
 # Klinische Linguistik
-x <-(klinisch$height)
+x <- (klinisch$height)
 abweichung.klinisch <- x - mean(x)
 quadr.abweichung.klinisch <- abweichung.klinisch^2
 varianz.x <- mean(quadr.abweichung.klinisch)
 print(varianz.x)
+
 klinisch.sd <- sqrt(varianz.x)
 print(klinisch.sd)
 
-# Linguistik Kognition und Kommunikation
+#Linguistik Kognition und Kommunikation
 y <- (linkk$height)
 abweichung.linkk <- y - mean(y)
 quadr.abweichung.linkk <- abweichung.linkk^2
@@ -166,6 +168,15 @@ speech.sd <- sqrt(varianz.z)
 print(speech.sd)
 
 # Berichten Sie jetzt die Mittelwerte und Standardabweichungen für die drei Gruppen. Die erste Gruppe steht hier als Muster:
-#print( paste("Studiengang: Klinische Linguistik","Mean:",mean(klinisch$height),"SD:",klinisch.sd) )
-CODE_HIER
+
+#Klinische Linguistik
+print( paste("Studiengang: Klinische Linguistik","Mean:",mean(klinisch$height),"SD:",klinisch.sd))
+
+#Linguistik Kognition und Kommunikation
+print (paste("Studiengang: M.A..Linguistik.Kognition.und.Kommunikation","Mean:",mean(linkk$height),"SD:",linkk.sd))
+
+#Speech Science
+print (paste("Studiengang: M.A..Speech.Science","Mean:",mean(speech$height),"SD:",speech.sd))
+
+
 
