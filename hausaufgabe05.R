@@ -145,10 +145,25 @@ print(varianz.x)
 klinisch.sd <- sqrt(varianz.x)
 print(klinisch.sd)
 
+# Linguistik Kognition und Kommunikation
+y <- (linkk$height)
+abweichung.linkk <- y - mean(y)
+quadr.abweichung.linkk <- abweichung.linkk^2
+varianz.y <- mean(quadr.abweichung.linkk)
+print(varianz.y)
 
+linkk.sd <- sqrt(varianz.y)
+print(linkk.sd)
 
-linkk.sd <- CODE_HIER
-speech.sd <- CODE_HIER
+#Speech Science
+z <- (speech§height)
+abweichung.speech <- z - mean(z)
+quadr.abweichung.speech <- abweichung.speech^2
+varianz.z <- mean(quadr.abweichung.speech)
+print(varianz.z)
+
+speech.sd <- sqrt(varianz.z)
+print(speech.sd)
 
 # Berichten Sie jetzt die Mittelwerte und Standardabweichungen für die drei Gruppen. Die erste Gruppe steht hier als Muster:
 #print( paste("Studiengang: Klinische Linguistik","Mean:",mean(klinisch$height),"SD:",klinisch.sd) )
