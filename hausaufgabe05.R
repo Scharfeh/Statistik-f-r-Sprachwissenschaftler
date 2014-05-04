@@ -1,6 +1,6 @@
 # Hausaufgabe 05
 # Henrike Scharfenberg <Scharfeh@students.uni-marburg.de>
-# 2014-05-03
+# 2014-05-04
 # Diese Datei darf nur Prüfungszwecken dienen.
 
 # Sie sollten die Datei auch in Ihren Ordner kopieren und einen Commit machen, 
@@ -22,7 +22,7 @@
 library(ggplot2)
 
 # und danach die Daten:
-dat <- read.table("Scharfeh/body_dim_long.tab",header=TRUE) 
+dat <- read.table("Data//body_dim_long.tab",header=TRUE) 
 
 # Wir haben im Kurs die Verteilung der Variabel weight angeschaut. In Skripten
 # werden Ergebnisse nicht automatich dargestellt, sondern nur dann, wenn ein
@@ -87,8 +87,9 @@ frauen <- subset(dat, sex=="f")
 #falls Sie unsicher sind, ob das Bild korrekt aussieht.) Hier und im Folgenden
 #sollten Sie die Plots so machen, damit man einen Vergleich zwischen den Gruppen
 #ziehen kann. Dafür gibt es verschiedene Möglichkeiten; die Wahl bleibt Ihnen
-#überlassen. height.grafik.basis <- ggplot(data=frauen,aes(x=height))
+#überlassen. 
 
+#Frauen
 height.grafik.basis <- ggplot(data=frauen,aes(x=major))
 frauen.studiengang.bw <- height.grafik.basis + geom_boxplot(aes(x=major,y=height))
 print(frauen.studiengang.bw)
@@ -101,13 +102,6 @@ print(frauen.studiengang.bw)
 # Wir können natürlich auch die Dichte anschauen:
 frauen.studiengang.dichte <- height.grafik.basis + geom_density((aes(x=height,color=major)))
 print(frauen.studiengang.dichte)
-
-# Haben Sie den gleichen Eindruck wie bei Box-Whisker bekommen? Unterscheiden
-# sich die Gruppen?
-# (Keine explizite Antwort nötig, nur eine Überlegung.)
-
-# Welche Gruppe hat gefehlt? Wie viele Datenpunkte gab es für die Gruppe?
-# (Keine explizite Antwort nötig, nur eine Überlegung.)
 
 # Wir können auch die verschiedenen Maße der Streuung berechnen.
 # In R gibt es oft verschiedene Möglichkeiten, etwas zu machen. Wir haben bisher
@@ -130,13 +124,16 @@ print(klinisch)
 # Jetzt brauchen wir die Teilmenge für die anderen beiden Studiengänge, 
 # Linguistik Kognition und Kommunikation und Speech Science
 # HINT: wie sehen die Namen aus bzw. wie werden sie im data frame buchstabiert?
-linkk <- frauen[frauen$major == "M.A..Linguistik.Kognition.und.KOmmunikation",]
-speech <- frauen[frauen$major == "M.A..Speech.Science", 
+linkk <- frauen[frauen$major == "M.A..Linguistik.Kognition.und.Kommunikation",]
+print(linkk)
+speech <- frauen[frauen$major == "M.A..Speech.Science",]
+print(speech)
 
 # Berechnen Sie -- ohne Hilfe von sd() -- die Standardabweichung für die Größe der drei 
 # Gruppen. Sie können auch weitere Zeilen hinzufügen, wenn es Ihnen so leichter
 # ist. 
 # HINT: Formel und Beispiel für die Berechnung auf den Folien!
+
 # Klinische Linguistik
 x <- (klinisch$height)
 abweichung.klinisch <- x - mean(x)
@@ -158,7 +155,7 @@ linkk.sd <- sqrt(varianz.y)
 print(linkk.sd)
 
 #Speech Science
-z <- (speech§height)
+z <- (speech$height)
 abweichung.speech <- z - mean(z)
 quadr.abweichung.speech <- abweichung.speech^2
 varianz.z <- mean(quadr.abweichung.speech)
