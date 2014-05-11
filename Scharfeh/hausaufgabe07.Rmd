@@ -96,11 +96,9 @@ print(output)
 
 Wie steht die Anzahl guter Noten in Beziehung zur Anzahl schlechter Noten? 
 
-antwort_hier
-
+Bei den beiden Notenblöcken wird deutlich, dass bei einer geringen SD (z.B. 3) der prozentuale Anteil der Schüler, der schlechte Noten hat, größer ist als der Anteil, der gute Noten hat. 
 Warum?
-
-antwort_hier
+Es werden weniger gute Noten als schlechte Noten betrachtet.
 
 ## Kurtosis und Schiefe
 Kurtosis (im Deutschen auch *Wölbung*) ist ein Maß dafür, wie spitz eine Verteilung ist. Die Normalverteilung wird nie zu extrem spitz -- der Gipfel bleibt immer schön rund, obwohl er manchmal eng wird. Andere Verteilungen (z.B. die Laplace-Verteilung ) haben Gipfel, die nicht rund sind.   
