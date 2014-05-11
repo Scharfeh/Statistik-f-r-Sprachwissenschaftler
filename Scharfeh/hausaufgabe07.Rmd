@@ -174,12 +174,17 @@ Die kritischen Werte für einen zweiseitigen $z$-Test sind $\pm$`(für Aplha=0,0
 
 ### Gibt es einen Unterschied?
 Bei diesem Dozenten ist die Verwaltung wirklich unsicher, ob und was für einen Unterschied es geben könnte. (Welche Testart sollte man hier nutzen?)
-
+- Einen 2-seitigen z-test. 
 In einem kleinen Seminar mit 7 Studenten beträgt der Durchschnittswert 10. Unterscheidet sich der Notenspiegel von dem idealen? Berechnen Sie den $z$-Test:
 
-code_hier
+```{r}
+z.n7 <- sqrt(7) * ((10 - 8)/3)
+print(z.n7)
 
-Das ist ein **_eins_von_signifikanter_insignifikanter_** Unterschied. 
+```
+
+
+Das ist ein **_insignifikanter_** Unterschied. 
 
 In einer Vorlesung vom selben Dozenten mit 50 Teilnehmern beträgt der Durchschnittswert wieder 10. (Es scheint, dass der Dozent 10 besonders toll findet.) Berechnen Sie den $z$-Test:
 
