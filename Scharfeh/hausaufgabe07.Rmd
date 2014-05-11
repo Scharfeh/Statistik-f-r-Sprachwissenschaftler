@@ -194,7 +194,7 @@ print (z.n50)
 ```
 
 
-Das ist ein **_eins_von_signifikanter_insignifikanter_** Unterschied. 
+Das ist ein **signifikanter** Unterschied. 
 
 Ist die Benotung vom Dozenten weniger als ideal? 
 
@@ -205,17 +205,25 @@ In einem mittelgroßen Seminar mit 20 Studenten beträgt der Durchschnittswert 7
 
 Berechnen Sie den $z$-Test:
 
-code_hier
+```{r}
+z.n20 <-sqrt(20) * ((7-8)/3)
+print(z.n20)
+```
 
-Das ist ein **_eins_von_signifikanter_insignifikanter_** Unterschied. 
+
+Das ist ein **insignifikanter** Unterschied. 
 
 Später ergibt sich, dass es eigentlich 25 Studenten im Kurs gab. (Der Dozent hat "einen Tippfehler" gemacht, als er seine Teilnehmerzahl per Mail an die Verwaltung geschickt hat.) Der Durchschnittswert bleibt -- behauptet der Dozent -- immer noch bei 7. Er behauptet weiterhin, dass das wunderbar nah am Erwartungswert (8) ist, und dass man ihn in Ruhe lassen sollte. Ist er zu streng?
 
 Berechnen Sie den $z$-Test:
 
-code_hier
+```{r}
+z.n25 <- sqrt(25) * ((7 - 8)/ 3)
+print(z.n25)
 
-Das ist ein **_eins_von_signifikanter_insignifikanter_** Unterschied. 
+```
+
+Das ist ein **insignifikanter** Unterschied. 
 
 ## Zum Überlegen
 Gibt es einen Grund, weshalb die Noten normal verteilt sein sollten? Warum ist das die übliche Annahme?
