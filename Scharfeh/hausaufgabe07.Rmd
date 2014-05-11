@@ -188,7 +188,11 @@ Das ist ein **_insignifikanter_** Unterschied.
 
 In einer Vorlesung vom selben Dozenten mit 50 Teilnehmern beträgt der Durchschnittswert wieder 10. (Es scheint, dass der Dozent 10 besonders toll findet.) Berechnen Sie den $z$-Test:
 
-code_hier
+```{r}
+z.n50 <-(50) * ((10-8)/3)
+print (z.n50)
+```
+
 
 Das ist ein **_eins_von_signifikanter_insignifikanter_** Unterschied. 
 
