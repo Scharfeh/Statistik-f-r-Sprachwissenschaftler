@@ -83,7 +83,8 @@ print (var.test.alternativ)
 # F-Test "Varianzen Gleich" ist.
 
 # Berechenen Sie den Levene Test:
-levene.Test ()
+lev.test <- leveneTest(rt$RT ~ rt$subj)
+print (lev.test)
 
 # Sind die Varianzen homogen? Vergessen Sie nicht, dass die Nullhypothese beim
 # Levene Test "Varianzen Gleich" ist.
