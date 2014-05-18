@@ -71,7 +71,7 @@ print(rt.plot)
 # Berechnen Sie jetzt den F-Test:
  
 subj.1.rt <- rt[rt$subj == "1", "RT"]
-subj.2.rt <- rt[rt$subj == "2 , "RT"]
+subj.2.rt <- rt[rt$subj == "2", "RT"]
 var.test (subj.1.rt, subj.2.rt)
 print (var.test)
 
@@ -108,7 +108,7 @@ print(welch)
 t.diff <- welch$statistic - two.sample$statistic
 print(paste("Die Differenz zwischen den beiden t-Werten ist",t.diff,"."))
 # - kann ich leider nicht bearbeiten, weil ich die Ergebnisse der beiden Tests wegen Fehler-
-meldungen nicht ablesen konnte.
+# meldungen nicht ablesen konnte.
 
 # Sind die Daten normal verteilt? Wir berechnen Sie den Shapiro Test für erste Versuchsperson:
 # shapiro <- shapiro.test(rt[rt$subj==1,"RT"])
@@ -201,4 +201,8 @@ if (shapiro.log2$p.value > 0.05){
 # Schluss den (Welch) t-Test für die logarithmischen Daten. Bekommen Sie das
 # gleiche Ergebnisse wie bei den Ausgangsdaten?
 
- CODE_HIER
+subj1.log <- rt[rt$subj == "1", "logRT"]
+subj2.log <- rt[rt$subj == "2", "logRT"]
+
+welch.log <- t.test(subj1.log,subj2.log)
+print(welch.log)
