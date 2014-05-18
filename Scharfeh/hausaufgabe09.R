@@ -70,9 +70,9 @@ print(rt.plot)
 
 # Berechnen Sie jetzt den F-Test:
  
-subj.1.rt <- rt[rt$subj == "1", "RT"]
-subj.2.rt <- rt[rt$subj == "2", "RT"]
-var.test (subj.1.rt, subj.2.rt)
+subj1.rt <- rt[rt$subj == "1", "RT"]
+subj2.rt <- rt[rt$subj == "2", "RT"]
+var.test (subj1.rt, subj2.rt)
 print (var.test)
 
 #alternative:
