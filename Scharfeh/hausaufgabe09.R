@@ -135,13 +135,12 @@ if (shapiro$p.value > 0.05){
     }
    
   
-
 # Wir haben auch Transformationen bei schiefen Datenverteilungen angesprochen.
 # Die logaritmische Verteilung ist ziemlich beliebt bei Reaktionszeitsdaten.
 
  rt$logRT <- log(rt$RT)
  print(summary(rt$logRT))
- logrt.plot <- CODE_HIER
+ logrt.plot <- qplot(x=rt$logRT,color=subj,fill=subj,data=rt,geom="density", alpha=I(0.3))
  print(logrt.plot)
 
 # Sieht die Verteilung besser aus? Sind die Varianzen "homogener" geworden? 
