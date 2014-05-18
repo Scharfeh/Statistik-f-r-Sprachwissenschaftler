@@ -93,8 +93,9 @@ print (lev.test)
 # eine Korrektur der Freiheitsgerade macht. Bei homogener Varianz sollten beide
 # Variante ähnliche bzw. (fast) gleiche Ergebnisse liefern. Ist das hier der
 # Fall?
-two.sample <- CODE_HIER
-welch <- CODE_HIER
+
+two.sample <- t.test(subj.1.rt, subj.2rt, var.equal=TRUE)
+welch <- t.test(subj.1.rt, subj2.rt)
 
 print(two.sample)
 print(welch)
