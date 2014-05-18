@@ -175,7 +175,27 @@ if (lev.test2$`Pr(>F)` > 0.05){
 # ausdrücken, ob die Daten normal verteilt sind. 
 # (Für die fortgeschrittenen: hier könnte man auch eine for-Schleife nutzen...)
 
- CODE_HIER
+Gruppe 1 Shapiro-Test:
+
+shapiro.log <- shapiro.test(rt[rt$subj==1,"logRT"])
+print(shapiro.log)
+
+if (shapiro.log$p.value > 0.05){
+    print("Shapiro's test insignifikant, die Daten sind normal verteilt.")
+    }else{
+     print("Shapiro's test signifikant, die Daten sind nicht normal verteilt.")
+    }
+
+Gruppe 2 Shapiro-Test:
+
+shapiro.log2 <- shapiro.test(rt[rt$subj==2,"logRT"])
+print(shapiro.log2)
+
+if (shapiro.log2$p.value > 0.05){
+    print("Shapiro's test insignifikant, die Daten sind normal verteilt.")
+    }else{
+    print("Shapiro's test signifikant, die Daten sind nicht normal verteilt.")
+    }
 
 # Hat die logarithmische Transformation insgesamt geholfen? Berechnen Sie zum
 # Schluss den (Welch) t-Test für die logarithmischen Daten. Bekommen Sie das
