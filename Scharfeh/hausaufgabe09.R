@@ -1,6 +1,6 @@
 # Hausaufgabe 09
 # Henrike Scharfenberg <Scharfeh@students.uni-marburg.de>
-# 2014-05-16
+# 2014-05-18
 # Dieses Werk ist lizenziert unter einer CC-BY-NC-SA Lizenz.
 
 
@@ -69,13 +69,13 @@ print(rt.plot)
 # Sie von vorneherein etwas behaupten haben.
 
 # Berechnen Sie jetzt den F-Test:
-#print(CODE_HIER)
+print(CODE_HIER)
 
 # Sind die Varianzen homogen? Vergessen Sie nicht, dass die Nullhypothese beim
 # F-Test "Varianzen Gleich" ist.
 
 # Berechenen Sie den Levene Test:
-#print(CODE_HIER)
+print(CODE_HIER)
 
 # Sind die Varianzen homogen? Vergessen Sie nicht, dass die Nullhypothese beim
 # Levene Test "Varianzen Gleich" ist.
@@ -84,61 +84,61 @@ print(rt.plot)
 # eine Korrektur der Freiheitsgerade macht. Bei homogener Varianz sollten beide
 # Variante ähnliche bzw. (fast) gleiche Ergebnisse liefern. Ist das hier der
 # Fall?
-# two.sample <- CODE_HIER
-# welch <- CODE_HIER
+two.sample <- CODE_HIER
+welch <- CODE_HIER
 
-# print(two.sample)
-# print(welch)
+print(two.sample)
+print(welch)
 
 # Das Ergebnis der verschiedenen Test-Funktionen in R ist übrigens eine Liste.
 # Wir können das ausnutzen, um zu schauen, ob es einen Unterschied zwischen den
 # beiden Testverfahren gab. Wenn die Varianz homogen war, sollten wir keinen
 # Unterschied sehen:
-# t.diff <- welch$statistic - two.sample$statistic
-# print(paste("Die Differenz zwischen den beiden t-Werten ist",t.diff,"."))
+t.diff <- welch$statistic - two.sample$statistic
+print(paste("Die Differenz zwischen den beiden t-Werten ist",t.diff,"."))
 
 # Sind die Daten normal verteilt? Wir berechnen Sie den Shapiro Test für erste Versuchsperson:
 # shapiro <- shapiro.test(rt[rt$subj==1,"RT"])
 # 
-# print(shapiro)
+print(shapiro)
 
 # Wir können auch "Entscheidungen" im Code treffen. Die Syntax dafür ist wie
 # folgt -- die runden und geschweiften Klammern sind alle sehr wichtig!
-# if (shapiro$p.value > 0.05){
-#   print("Shapiro's test insignikant, die Daten sind normal verteilt.")
-# }else{
-#   print("Shapiro's test signikant, die Daten sind nicht normal verteilt.")
-# }
+if (shapiro$p.value > 0.05){
+print("Shapiro's test insignikant, die Daten sind normal verteilt.")
+}else{
+   print("Shapiro's test signikant, die Daten sind nicht normal verteilt.")
+ }
 
 # Berechnen Sie Shapiro's Test für die andere Versuchsperson und drücken Sie mit
 # einem if-Block aus, ob die Daten normal verteilt sind.
 
-# CODE_HIER
+CODE_HIER
 
 # Wir haben auch Transformationen bei schiefen Datenverteilungen angesprochen.
 # Die logaritmische Verteilung ist ziemlich beliebt bei Reaktionszeitsdaten.
 
-# rt$logRT <- log(rt$RT)
-# print(summary(rt$logRT))
-# logrt.plot <- CODE_HIER
-# print(logrt.plot)
+ rt$logRT <- log(rt$RT)
+ print(summary(rt$logRT))
+ logrt.plot <- CODE_HIER
+ print(logrt.plot)
 
 # Sieht die Verteilung besser aus? Sind die Varianzen "homogener" geworden? 
 # Berechnen Sie den F-Test und den Levene-Test für die logaritmisch skalierten 
 # Daten. Nach jedem Test sollten Sie auch programmatisch (=durch if-Blöcke)
 # ausdrücken, ob die Varianzen homogen sind.
 
-# CODE_HIER
+ CODE_HIER
 
 # Sind die Daten "normaler" gewordern? Berechnen Sie den Shapiro-Test für beide 
 # Gruppen. Nach jeder Gruppe sollten Sie auch programmatisch (=durch if-Blöcke)
 # ausdrücken, ob die Daten normal verteilt sind. 
 # (Für die fortgeschrittenen: hier könnte man auch eine for-Schleife nutzen...)
 
-# CODE_HIER
+ CODE_HIER
 
 # Hat die logarithmische Transformation insgesamt geholfen? Berechnen Sie zum
 # Schluss den (Welch) t-Test für die logarithmischen Daten. Bekommen Sie das
 # gleiche Ergebnisse wie bei den Ausgangsdaten?
 
-# CODE_HIER
+ CODE_HIER
