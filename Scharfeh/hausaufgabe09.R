@@ -94,8 +94,8 @@ print (lev.test)
 # Variante ähnliche bzw. (fast) gleiche Ergebnisse liefern. Ist das hier der
 # Fall?
 
-two.sample <- t.test(subj.1.rt, subj.2rt, var.equal=TRUE)
-welch <- t.test(subj.1.rt, subj2.rt)
+two.sample <- t.test(subj1.rt, subj2.rt, var.equal=TRUE)
+welch <- t.test(subj1.rt, subj2.rt)
 
 print(two.sample)
 print(welch)
@@ -107,8 +107,7 @@ print(welch)
 
 t.diff <- welch$statistic - two.sample$statistic
 print(paste("Die Differenz zwischen den beiden t-Werten ist",t.diff,"."))
-# - kann ich leider nicht bearbeiten, weil ich die Ergebnisse der beiden Tests wegen Fehler-
-# meldungen nicht ablesen konnte.
+
 
 # Sind die Daten normal verteilt? Wir berechnen Sie den Shapiro Test für erste Versuchsperson:
 # shapiro <- shapiro.test(rt[rt$subj==1,"RT"])
@@ -161,7 +160,7 @@ if (f.test2$p.value >0.05)
 
 #LEVENE-TEST für logaritmisch skalierte Daten:
 
-lev.test <- leveneTest(rt$logRT ~ rt$subj)
+lev.test2 <- leveneTest(rt$logRT ~ rt$subj)
 print(lev.test) 
 
 if (lev.test2$`Pr(>F)` > 0.05){
