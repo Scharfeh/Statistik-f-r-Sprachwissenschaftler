@@ -124,7 +124,7 @@ print("Shapiro's test insignikant, die Daten sind normal verteilt.")
 # Berechnen Sie Shapiro's Test für die andere Versuchsperson und drücken Sie mit
 # einem if-Block aus, ob die Daten normal verteilt sind.
 
-shapiro <- shapiro.test(subj.2.rt)
+shapiro <- shapiro.test(subj2.rt)
 print (shapiro)
 
 if (shapiro$p.value > 0.05){
