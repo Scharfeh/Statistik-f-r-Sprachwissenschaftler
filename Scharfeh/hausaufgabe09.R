@@ -110,7 +110,7 @@ print(paste("Die Differenz zwischen den beiden t-Werten ist",t.diff,"."))
 
 
 # Sind die Daten normal verteilt? Wir berechnen Sie den Shapiro Test für erste Versuchsperson:
-# shapiro <- shapiro.test(rt[rt$subj==1,"RT"])
+shapiro <- shapiro.test(rt[rt$subj==1,"RT"])
 print(shapiro)
 
 # Wir können auch "Entscheidungen" im Code treffen. Die Syntax dafür ist wie
