@@ -69,13 +69,21 @@ print(rt.plot)
 # Sie von vorneherein etwas behaupten haben.
 
 # Berechnen Sie jetzt den F-Test:
-print(CODE_HIER)
+ 
+subj.1.rt <- rt[rt$subj == "1", "RT"]
+subj.2.rt <- rt[rt$subj == "2 , "RT"]
+var.test (subj.1.rt, subj.2.rt)
+print (var.test)
+
+#alternative:
+var.test.alternativ <- var.test(rt$RT ~ rt$subj)
+print (var.test.alternativ)
 
 # Sind die Varianzen homogen? Vergessen Sie nicht, dass die Nullhypothese beim
 # F-Test "Varianzen Gleich" ist.
 
 # Berechenen Sie den Levene Test:
-print(CODE_HIER)
+levene.Test ()
 
 # Sind die Varianzen homogen? Vergessen Sie nicht, dass die Nullhypothese beim
 # Levene Test "Varianzen Gleich" ist.
