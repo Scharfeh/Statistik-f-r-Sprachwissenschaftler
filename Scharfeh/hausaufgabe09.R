@@ -148,7 +148,7 @@ if (shapiro$p.value > 0.05){
 # Daten. Nach jedem Test sollten Sie auch programmatisch (=durch if-Blöcke)
 # ausdrücken, ob die Varianzen homogen sind.
 
-F-TEST für logaritmisch skalierte Daten:
+#F-TEST für logaritmisch skalierte Daten:
 
 f.test2 <-var.test(rt$logRT ~ rt$subj)
 print(f.test2)
@@ -159,7 +159,7 @@ if (f.test2$p.value >0.05)
     print("F-Test signifikant, die Varianzen sind nicht homogen")
     }
 
-LEVENE-TEST für logaritmisch skalierte Daten:
+#LEVENE-TEST für logaritmisch skalierte Daten:
 
 lev.test <- leveneTest(rt$logRT ~ rt$subj)
 print(lev.test) 
@@ -175,7 +175,7 @@ if (lev.test2$`Pr(>F)` > 0.05){
 # ausdrücken, ob die Daten normal verteilt sind. 
 # (Für die fortgeschrittenen: hier könnte man auch eine for-Schleife nutzen...)
 
-Gruppe 1 Shapiro-Test:
+#Gruppe 1 Shapiro-Test:
 
 shapiro.log <- shapiro.test(rt[rt$subj==1,"logRT"])
 print(shapiro.log)
@@ -186,7 +186,7 @@ if (shapiro.log$p.value > 0.05){
      print("Shapiro's test signifikant, die Daten sind nicht normal verteilt.")
     }
 
-Gruppe 2 Shapiro-Test:
+#Gruppe 2 Shapiro-Test:
 
 shapiro.log2 <- shapiro.test(rt[rt$subj==2,"logRT"])
 print(shapiro.log2)
