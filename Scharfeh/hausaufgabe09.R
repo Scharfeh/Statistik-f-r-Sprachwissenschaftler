@@ -104,12 +104,16 @@ print(welch)
 # Wir können das ausnutzen, um zu schauen, ob es einen Unterschied zwischen den
 # beiden Testverfahren gab. Wenn die Varianz homogen war, sollten wir keinen
 # Unterschied sehen:
+
 t.diff <- welch$statistic - two.sample$statistic
 print(paste("Die Differenz zwischen den beiden t-Werten ist",t.diff,"."))
+# - kann ich leider nicht bearbeiten, weil ich die Ergebnisse der beiden Tests wegen Fehler-
+meldungen nicht ablesen konnte.
 
 # Sind die Daten normal verteilt? Wir berechnen Sie den Shapiro Test für erste Versuchsperson:
 # shapiro <- shapiro.test(rt[rt$subj==1,"RT"])
 # 
+shapiro <- shapiro.test(rt[rt$subj==1,"RT"])
 print(shapiro)
 
 # Wir können auch "Entscheidungen" im Code treffen. Die Syntax dafür ist wie
