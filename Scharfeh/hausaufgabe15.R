@@ -83,7 +83,11 @@ print(summary(m4))
 # Wie sieht es aus mit den Daten zum Kursteilnehmern? Plotten Sie und berechnen
 # Sie ein Modell für das Gewicht der Teilnehmer als Funktion von Körpergröße.
 
-# CODE_HIER
+# Daten für alle Kursteilnehmer:
+
+ggplot(body,aes(x=height,y=weight)) +  geom_point() + geom_smooth(method="lm")
+m5 <- lm(weight ~ height, data=body)
+print(summary(m5))
 
 # Warum funktioniert die Regression besser beim Datensatz "women" als bei den
 # Kursteilnehmerdaten? HINT: Lesen Sie die Hilfe-Beschreibung von women! 
