@@ -38,7 +38,7 @@
 library(ggplot2)
 
 # und danach die Daten:
-body <- read.table("Data/body_dim_long.tab",header=TRUE) 
+body <- read.table("Scharfeh/body_dim_long.tab",header=TRUE) 
 
 # Wir werden auch den Datensatz women nutzen, der schon mit R geliefert wird.
 # Mehr Information zum Datensatz bekommen Sie mit ?women. Die Angaben sind in
@@ -68,7 +68,14 @@ print(summary(m2))
 # von weight.kg darstellen? Plotten und berechnen Sie das neue Modell, wie ich
 # es oben für die zwei bisherigen Modelle gemacht habe.
 
-# CODE_HIER
+ggplot(women.metric,aes(x=weight,y=height)) +  geom_point() + geom_smooth(method="lm")
+m3 <- lm(height.cm ~ weight.kg, data=women.metric)
+print(summary(m3))
+
+ ggplot(women.metric,aes(x=weight.kg,y=height.cm)) +  geom_point() + geom_smooth(method="lm")
+m4 <- lm(height.cm ~ weight.kg, data=women.metric)
+print(summary(m4))
+
 
 # Hat sich der R^2 Wert geändert? Die t-Werte? Die Koeffizienten? Was ist die
 # Beziehung zwischen diesem Modell und m2?
