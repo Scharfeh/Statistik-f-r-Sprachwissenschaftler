@@ -40,10 +40,25 @@ Die Aufgabe ist: eine Ausgangsfrage und die darauf folgenden Anschlussfragen sta
 Mögliche Ausgangsfragen sind unter anderem:
 
 * Was bestimmt den Preis eines Diamanten?
-* Was bestimmt das Gewicht eines Diamanten? Hat Farbe oder Klarheit eine Auswirkung daruf oder bloß Volumen?
+* Was bestimmt das Gewicht eines Diamanten? Hat Farbe oder Klarheit eine Auswirkung darauf oder bloß Volumen?
 * Gibt es einen Zusammenhang zwischen den verschieden Dimensionen ("Längen")? 
 * Gibt es einen Zusammenhang zwischen Farbe und Klarheit? Zwischen Farbe und Carat? Zwischen Farbe und Tiefe?
 * ...
+
+# Ausgangsfragestellung für die Untersuchung: 
+Was beeinflusst den Preis mehr: die Farbe oder der Schliff eines Diamanten?
+
+Einfluss des Schliffs (cut) auf den Preis:
+
+```{r}
+ggplot(diamonds, aes(x=cut, y=price))+ facet_wrap (~clarity) +geom_point()
+```
+
+Einfluss der Farbe (im Datensatz fälschlich color) auf den Preis des Diamanten:
+```{r}
+ggplot(diamonds, aes(x=color, y=price, colour=color))+facet_wrap (~cut)+ geom_point()
+
+```
 
 *Vergessen Sie dabei nicht, dass wir bisher nur Methoden gelernt haben, wo die abhängige Variable zumindest intervallskaliert ist!*
 
