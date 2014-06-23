@@ -126,12 +126,14 @@ print(model4.summary)
 # Bevor Sie die Regression y ~ x1 + x2 berechnen, schauen Sie sich die
 # Korrelation (mit Konfidenzintervall!) zwischen x1 und x2 an:
 
- CODE_HIER
+cor.test(pyreg$x1, pyreg$x2, method="pearson")
 
 # Wenn Sie nicht miteinander signifikant korreliert sind, sollten Sie auch die
 # Regression y ~ x1 + x2 berechnen:
 
- CODE_HIER
+model5 <- lm(y ~ x1 + x2, data=pyreg)
+model5.summary <- summary(model5)
+print(model5.summary)
 
 # Wie gut passt das lineare Modell zu den Daten? Schauen Sie sich die R^2 und 
 # F-Werte an sowie auch die t-Werte für die einzelnen Prediktoren. Glauben Sie, 
