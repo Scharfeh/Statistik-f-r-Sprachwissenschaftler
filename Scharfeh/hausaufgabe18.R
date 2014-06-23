@@ -38,15 +38,15 @@
 library(ggplot2)
 
 # Wir fangen mit einem einfachen künstlichen Datensatz an. Sie sehen hier die
-# Formlen für die Variablen.
+# Formeln für die Variablen.
 x1 = 1:10
 x2 = 2*x1
 y = x1 + x2
 linreg <- data.frame(x1,x2,y)
 
-# Wir können y ~ x1 und y ~ x2 einzel plotten:
-# ggplot(linreg,aes(x=x1,y=y)) + geom_point() + geom_smooth(method="lm")
-# ggplot(linreg,aes(x=x2,y=y)) + geom_point() + geom_smooth(method="lm")
+# Wir können y ~ x1 und y ~ x2 einzeln plotten:
+ggplot(linreg,aes(x=x1,y=y)) + geom_point() + geom_smooth(method="lm")
+ggplot(linreg,aes(x=x2,y=y)) + geom_point() + geom_smooth(method="lm")
 
 # Die Linie passt sehr gut zu den Punkten, was wir hätten erwarten sollen, denn
 # wir haben y aus einfachen Summen von x1 und x2 berechnet. Wir berechnen
