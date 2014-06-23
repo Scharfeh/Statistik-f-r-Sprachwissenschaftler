@@ -53,14 +53,9 @@ ggplot(linreg,aes(x=x2,y=y)) + geom_point() + geom_smooth(method="lm")
 # zunächst die lineare Regression für die einzelnen unabhängige Variablen.
 
 # Code 1 (für x1):
-x1 <- lm (y ~ x1, data=pyreg) 
-x1.summary <- summary(x1)
-print (x1.summary)
-
+lm (y ~ x1, data=linreg)
 # Code 2 (für x2):
-x2 <- lm (y ~x2, data=pyreg)
-x2.summary <- summary(x2)
-print (x2)
+lm (y ~ x2, data=linreg)
 
 # Was haben Sie für Koeffizeinten bekommen? Wenn wir daran denken, dass x2 = 2*x1 ist, wissen wir, dass 
 y = x1 + x2
@@ -70,7 +65,7 @@ y = x1 + x2
  y = x1 + x2 
    = 0.5*x2 + x2 
    = 1.5*x2
-# Das sind doch due Regressionkoeffizienten! 
+# Das sind doch die Regressionkoeffizienten! 
 
 
 # Wie sieht es aus, wenn wir beide gleichzeitig aufnehmen? Machen wir zuerst eine Grafik:
@@ -89,7 +84,11 @@ print(model.summary)
 # passiert, wenn wir die Reihenfolge von x1 und x2 in lm() umstellen? Führen Sie
 # die passende Regression aus:
 
-CODE_HIER
+# CODE_HIER
+model2 <- lm(y ~ x2 + x1, data=linreg)
+model2.summary <- summary(model2)
+print(model2.summary)
+
 
 # Bei linearen Regression müssen wir immer aufpassen, dass unsere Prediktoren
 # nicht zu stark miteinander korrelieren. Das könnten wir auch mit cor()
