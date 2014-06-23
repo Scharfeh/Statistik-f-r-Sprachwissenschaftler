@@ -98,7 +98,7 @@ cor(linreg$x1,linreg$x2)
 
 # Wir laden jetzt einen weiteren Datensatz als Beispiel: 
 # (Sie müssen den folgenden Befehl evtl. anpassen!)
-pyreg <- read.table("Scharfeh/pyreg.tab",header=TRUE) 
+pyreg <- read.table("Data/pyreg.tab",header=TRUE) 
 
 # Wie linreg hat pyreg drei Spalten x1, x2, y
 # Plotten Sie die Punkte + Regressionslinie für y ~ x1 (wie oben).
