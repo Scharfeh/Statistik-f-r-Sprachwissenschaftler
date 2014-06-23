@@ -180,3 +180,4 @@ cor.test(pyreg$y, pyreg$x2, method="spearman")
 # Was sagt das uns über (lineare) Regression? Ist es gut, dass das
 # Regressionmodell anscheinend so gut war?
 
+-
