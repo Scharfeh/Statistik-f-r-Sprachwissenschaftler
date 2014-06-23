@@ -52,19 +52,19 @@ linreg <- data.frame(x1,x2,y)
 # wir haben y aus einfachen Summen von x1 und x2 berechnet. Wir berechnen
 # zunächst die lineare Regression für die einzelnen unabhängige Variablen.
 
-# CODE_HIER (x1)
+ CODE_HIER (x1)
 
 
-# CODE_HIER (x2)
+CODE_HIER (x2)
 
 # Was haben Sie für Koeffizeinten bekommen? Wenn wir daran denken, dass x2 = 2*x1 ist, wissen wir, dass 
-# y = x1 + x2
-#   = x1 + 2*x1
-#   = 3*x1
+y = x1 + x2
+   = x1 + 2*x1
+   = 3*x1
 # oder, andersrum:
-# y = x1 + x2 
-#   = 0.5*x2 + x2 
-#   = 1.5*x2
+ y = x1 + x2 
+   = 0.5*x2 + x2 
+   = 1.5*x2
 # Das sind doch due Regressionkoeffizienten! 
 
 
@@ -84,13 +84,13 @@ print(model.summary)
 # passiert, wenn wir die Reihenfolge von x1 und x2 in lm() umstellen? Führen Sie
 # die passende Regression aus:
 
-# CODE_HIER
+CODE_HIER
 
 # Bei linearen Regression müssen wir immer aufpassen, dass unsere Prediktoren
 # nicht zu stark miteinander korrelieren. Das könnten wir auch mit cor()
 # austesten. Hier sollten Sie schon Pearsons Korrelationkoeffizienten nennen
 # können, ohne folgenden Befehl auszuführen.
-# cor(linreg$x1,linreg$x2)
+cor(linreg$x1,linreg$x2)
 
 # Wir laden jetzt einen weiteren Datensatz als Beispiel: 
 # (Sie müssen den folgenden Befehl evtl. anpassen!)
@@ -99,43 +99,43 @@ pyreg <- read.table("Data/pyreg.tab",header=TRUE)
 # Wie linreg hat pyreg drei Spalten x1, x2, y
 # Plotten Sie die Punkte + Regressionslinie für y ~ x1 (wie oben).
 
-# CODE_HIER
+ CODE_HIER
 
 # Und das gleiche für y ~ x2. 
 
-# CODE_HIER
+ CODE_HIER
 
 # Berechnen Sie die zwei Regressionsmodelle für y ~ x1 und y ~ x2
 
-# CODE_HIER
+ CODE_HIER
 
-# CODE_HIER
+ CODE_HIER
 
 # Bevor Sie die Regression y ~ x1 + x2 berechnen, schauen Sie sich die
 # Korrelation (mit Konfidenzintervall!) zwischen x1 und x2 an:
 
-# CODE_HIER
+ CODE_HIER
 
 # Wenn Sie nicht miteinander signifikant korreliert sind, sollten Sie auch die
 # Regression y ~ x1 + x2 berechnen:
 
-# CODE_HIER
+ CODE_HIER
 
 # Wie gut passt das lineare Modell zu den Daten? Schauen Sie sich die R^2 und 
 # F-Werte an sowie auch die t-Werte für die einzelnen Prediktoren. Glauben Sie, 
 # dass y im linearen Verhältnis zu x1 und x2 steht? Machen Sie eine Grafik wie
 # oben für y ~ x1 + x2, **nachdem Sie sich eine Antwort überlegt haben**.
 
-# CODE_HIER
+ CODE_HIER
 
 # Glauben Sie jetzt, dass y im linearen Verhältnis zu x1 und x2 steht? Warum (nicht)?
 
 # Wie sieht mit Korrelationen aus? Berechnen Sie die Korrelation (sowohl Pearson
 # als auch Spearman) zwischen (y und x1) sowie auch zwischen (y und x2). 
 
-# CODE_HIER
+ CODE_HIER
 
-# CODE_HIER 
+ CODE_HIER 
 
 # Welche Art von Korrelation macht am meisten Sinn bei diesen Daten?
 
