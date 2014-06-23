@@ -103,17 +103,25 @@ pyreg <- read.table("Scharfeh/pyreg.tab",header=TRUE)
 # Wie linreg hat pyreg drei Spalten x1, x2, y
 # Plotten Sie die Punkte + Regressionslinie für y ~ x1 (wie oben).
 
- CODE_HIER
+#CODE_HIER
+ggplot(pyreg,aes(x=x1,y=y)) + geom_point() + geom_smooth(method="lm")
 
 # Und das gleiche für y ~ x2. 
 
- CODE_HIER
+#CODE_HIER
+ggplot(pyreg,aes(x=x2,y=y)) + geom_point() + geom_smooth(method="lm")
 
 # Berechnen Sie die zwei Regressionsmodelle für y ~ x1 und y ~ x2
 
- CODE_HIER
+#Regressionsmodell für x1:
+model3 <- lm(y ~ x1, data=pyreg)
+model3.summary <- summary(model3)
+print(model3.summary)
 
- CODE_HIER
+# Regressionsmodell für x2:
+model4 <- lm(y ~ x2, data=pyreg)
+model4.summary <- summary(model4)
+print(model4.summary)
 
 # Bevor Sie die Regression y ~ x1 + x2 berechnen, schauen Sie sich die
 # Korrelation (mit Konfidenzintervall!) zwischen x1 und x2 an:
