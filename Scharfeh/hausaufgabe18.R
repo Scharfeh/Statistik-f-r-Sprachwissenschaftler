@@ -1,5 +1,5 @@
 # Hausaufgabe 18
-# Phillip Alday <phillip.alday@staff.uni-marburg.de>
+# Henrike Scharfenberg <Scharfeh@students.uni-marburg.de>
 # 2014-06-17
 # Dieses Werk ist lizenziert unter einer CC-BY-NC-SA Lizenz.
 
