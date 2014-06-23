@@ -52,10 +52,15 @@ ggplot(linreg,aes(x=x2,y=y)) + geom_point() + geom_smooth(method="lm")
 # wir haben y aus einfachen Summen von x1 und x2 berechnet. Wir berechnen
 # zunächst die lineare Regression für die einzelnen unabhängige Variablen.
 
- CODE_HIER (x1)
+# Code 1 (für x1):
+x1 <- lm (y ~ x1, data=pyreg) 
+x1.summary <- summary(x1)
+print (x1.summary)
 
-
-CODE_HIER (x2)
+# Code 2 (für x2):
+x2 <- lm (y ~x2, data=pyreg)
+x2.summary <- summary(x2)
+print (x2)
 
 # Was haben Sie für Koeffizeinten bekommen? Wenn wir daran denken, dass x2 = 2*x1 ist, wissen wir, dass 
 y = x1 + x2
