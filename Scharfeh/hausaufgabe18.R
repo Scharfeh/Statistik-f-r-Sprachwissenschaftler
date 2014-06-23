@@ -140,7 +140,10 @@ print(model5.summary)
 # dass y im linearen Verhältnis zu x1 und x2 steht? Machen Sie eine Grafik wie
 # oben für y ~ x1 + x2, **nachdem Sie sich eine Antwort überlegt haben**.
 
- CODE_HIER
+# Regression y ~ x1 + x2
+model5 <- lm(y ~ x1 + x2, data=pyreg)
+model5.summary <- summary(model5)
+print(model5.summary)
 
 # Glauben Sie jetzt, dass y im linearen Verhältnis zu x1 und x2 steht? Warum (nicht)?
 
