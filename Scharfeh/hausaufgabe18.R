@@ -58,13 +58,13 @@ lm (y ~ x1, data=linreg)
 lm (y ~ x2, data=linreg)
 
 # Was haben Sie für Koeffizeinten bekommen? Wenn wir daran denken, dass x2 = 2*x1 ist, wissen wir, dass 
-y = x1 + x2
-   = x1 + 2*x1
-   = 3*x1
+#y = x1 + x2
+#   = x1 + 2*x1
+#   = 3*x1
 # oder, andersrum:
- y = x1 + x2 
-   = 0.5*x2 + x2 
-   = 1.5*x2
+# y = x1 + x2 
+#   = 0.5*x2 + x2 
+#   = 1.5*x2
 # Das sind doch die Regressionkoeffizienten! 
 
 
@@ -140,6 +140,8 @@ print(model5.summary)
 # dass y im linearen Verhältnis zu x1 und x2 steht? Machen Sie eine Grafik wie
 # oben für y ~ x1 + x2, **nachdem Sie sich eine Antwort überlegt haben**.
 
+ggplot(pyreg,aes(x=x1,y=x2)) + geom_point(aes(size=y))
+
 # Regression y ~ x1 + x2
 model5 <- lm(y ~ x1 + x2, data=pyreg)
 model5.summary <- summary(model5)
@@ -150,9 +152,16 @@ print(model5.summary)
 # Wie sieht mit Korrelationen aus? Berechnen Sie die Korrelation (sowohl Pearson
 # als auch Spearman) zwischen (y und x1) sowie auch zwischen (y und x2). 
 
- CODE_HIER
+#Korrelation x1 Pearson
+cor.test(pyreg$y, pyreg$x1, method="pearson")
+#Korrelation x1 Spearman
+cor.test(pyreg$y, pyreg$x1, method="spearman")
 
- CODE_HIER 
+#Korrelation x2 Pearson
+cor.test(pyreg$y, pyreg$x2, method="pearson")
+#Korrelation x2 Spearman
+cor.test(pyreg$y, pyreg$x2, method="spearman")
+
 
 # Welche Art von Korrelation macht am meisten Sinn bei diesen Daten?
 
