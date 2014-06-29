@@ -1,6 +1,6 @@
 % Hausaufgabe 20
 % Henrike Scharfenberg <Scharfeh@students.uni-marburg.de>
-% 2014-06-29
+% 2014-06-30
 
 Falls die Umlaute in dieser und anderen Dateien nicht korrekt dargestellt werden, sollten Sie File > Reopen with Encoding > UTF-8 sofort machen (und auf jeden Fall ohne davor zu speichern), damit die Enkodierung korrekt erkannt wird! 
 
@@ -156,7 +156,7 @@ Könnten wir hier ein Intercepts-Only-Modell begründen?
 
 Wir könnten -- sollten -- uns hier auch das Modell mit `gender` in der RE-Struktur anschauen, aber solche Berechnungen werden sehr schnell für eine Hausaufgabe zu aufwendig. Sie können sich an dieser Stelle schon vorstellen, wie kompliziert die RE-Struktur werden kann. Wir müssten für jeden zufälligen Effekt die maximale berechenbare Struktur finden und die einzelnen Berechnungen können schon ziemlich lange dauern. Das ist ein deutlicher Nachteil dieser Methode.   
 
-(Übrigens: Auch bei den RE-Struktur müssen wir berücksichtigen, ob die Interkation zu einer signifikanten Verbesserung führt. In der Regel nehmen wir allerdings keine RE-Struktur an, die komplexer als unsere FE-Struktur ist. Das heißt, wir schauen nicht, ob die Interaktion in der RE-Struktur was bringt, wenn wir die Interkation nicht in die fixen Effekte aufgenommen haben. )
+(Übrigens: Auch bei den RE-Struktur müssen wir berücksichtigen, ob die Interaktion zu einer signifikanten Verbesserung führt. In der Regel nehmen wir allerdings keine RE-Struktur an, die komplexer als unsere FE-Struktur ist. Das heißt, wir schauen nicht, ob die Interaktion in der RE-Struktur was bringt, wenn wir die Interaktion nicht in die fixen Effekte aufgenommen haben. )
 
 # CIs und Effects
 Auch für gemischte Modelle können wir Konfidenzintervalle berechnen. Der Befehl lautet -- wie bei `lm()` -- `confint()`. Allerdings ist die Berechnung deutlich aufwendiger, weshalb wir hier nur beispielweise sie für das einfachste Modell berechnen:
@@ -181,7 +181,7 @@ Was ist der Unterschied zwischen den Konfidenzintervallen von `confint()` und vo
 
 # Intercepts und Slopes
 
-Ich habe am Anfang meiner Erklärung für gemischte Modelle erwähnt, dass wir sie eigentlich als Regression mit Korrektur für die verschiedenen Gruppierungen (Subjects, Items, usw.) betrachten können. Das können wir eigentlich auch direkt am Model sehen, indem wir den Befehl `coef()` nutzen.
+Ich habe am Anfang meiner Erklärung für gemischte Modelle erwähnt, dass wir sie eigentlich als Regression mit Korrektur für die verschiedenen Gruppierungen (Subjects, Items, usw.) betrachten können. Das können wir eigentlich auch direkt am Modell sehen, indem wir den Befehl `coef()` nutzen.
 
 Wir schauen uns zuerst ein Intercept-Only-Modell an: 
 ```{r}
