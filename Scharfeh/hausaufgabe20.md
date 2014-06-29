@@ -1,6 +1,6 @@
 % Hausaufgabe 20
 % Henrike Scharfenberg <Scharfeh@students.uni-marburg.de>
-% 2014-06-29
+% 2014-06-30
 
 Falls die Umlaute in dieser und anderen Dateien nicht korrekt dargestellt werden, sollten Sie File > Reopen with Encoding > UTF-8 sofort machen (und auf jeden Fall ohne davor zu speichern), damit die Enkodierung korrekt erkannt wird! 
 
@@ -58,7 +58,11 @@ Die Items in dieser Studie sind "Szenarien", also Situationen wo man mehr oder w
 
 Allerdings merken wir, dass `scenario` falsch kodiert ist, was wir korrigieren müssen:
 
-CODE_BLOCK_HIER
+´scenario` richtig kodiert:
+
+```r
+stimmen$scenario <- as.factor(stimmen$scenario)
+```
 
 ## Auswirkung der experimentellen Manipulation
 Um einen groben Eindruck zu bekommen, können wir schnell einen Boxplot machen:
@@ -75,7 +79,7 @@ ggplot(stimmen) +
 ## Warning: Removed 1 rows containing non-finite values (stat_boxplot).
 ```
 
-<img src="figure/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
 
 Wir merken dabei, dass:
 1. Männer haben eindeutig tiefere Stimmen, was uns schon davor bekannt war.
@@ -92,11 +96,32 @@ Wir können auf ähnliche Art und Weise ein Plot für die Versuchspersonen und S
 
 Erstellen Sie einen Boxplot für `frequency` nach `subject`, wie oben für `frequency` nach `attitude` gemacht wurde (hier ohne Aufteilung nach Geschlecht). Dieser gibt uns einen Blick in die Varianz innerhalb und zwischen Versuchspersonen. 
 
-CODE_BLOCK_HIER
+# Frequency - subject
+
+```r
+ggplot(stimmen) +
+  geom_boxplot(aes(x=subject,y=frequency)) 
+```
+
+```
+## Warning: Removed 1 rows containing non-finite values (stat_boxplot).
+```
+
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
 
 Machen Sie das gleiche für `scenario`. 
+#Frequency - scenario
 
-CODE_BLOCK_HIER
+```r
+ggplot(stimmen) +
+  geom_boxplot(aes(x=scenario,y=frequency)) 
+```
+
+```
+## Warning: Removed 1 rows containing non-finite values (stat_boxplot).
+```
+
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
 
 Gibt es mehr Varianz zwischen Szenarien oder zwischen Versuchspersonen? 
 
@@ -192,8 +217,41 @@ Jetzt berechen wir das Modell mit der Interaktion zwischen `gender` und `attitud
 
 
 ```r
-#model.attitude.int <- CODE_HIER
-#summary(model.attitude.int)
+model.attitude.int <-lmer(frequency ~ gender * attitude + (1|subject) + (1|scenario), data=stimmen, REML=FALSE)
+summary(model.attitude.int)
+```
+
+```
+## Linear mixed model fit by maximum likelihood  ['lmerMod']
+## Formula: frequency ~ gender * attitude + (1 | subject) + (1 | scenario)
+##    Data: stimmen
+## 
+##      AIC      BIC   logLik deviance df.resid 
+##    807.1    824.0   -396.6    793.1       76 
+## 
+## Scaled residuals: 
+##    Min     1Q Median     3Q    Max 
+## -2.168 -0.556 -0.063  0.510  3.390 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev.
+##  scenario (Intercept) 205      14.3    
+##  subject  (Intercept) 419      20.5    
+##  Residual             620      24.9    
+## Number of obs: 83, groups: scenario, 7; subject, 6
+## 
+## Fixed effects:
+##                     Estimate Std. Error t value
+## (Intercept)           260.69      14.09   18.51
+## genderM              -116.20      18.39   -6.32
+## attitudepol           -27.40       7.68   -3.57
+## genderM:attitudepol    15.57      10.94    1.42
+## 
+## Correlation of Fixed Effects:
+##             (Intr) gendrM atttdp
+## genderM     -0.653              
+## attitudepol -0.273  0.209       
+## gndrM:tttdp  0.192 -0.293 -0.702
 ```
 
 Haben sich die Koeffizienten oder Standardfehler geändert?
@@ -202,10 +260,20 @@ Ist die Interaktion signifikant? Wir können uns den Koeffizienten anschauen, ab
 
 
 ```r
-#anova(model.attitude,model.attitude.int)
+anova(model.attitude,model.attitude.int)
 ```
 
-Hat die Interkation das Modell verbessert? Wenn ein komplexeres Modell nicht signifikant besser als ein einfacheres Modell ist, bleiben wir bei dem einfacheren Modell! 
+```
+## Data: stimmen
+## Models:
+## model.attitude: frequency ~ gender + attitude + (1 | subject) + (1 | scenario)
+## model.attitude.int: frequency ~ gender * attitude + (1 | subject) + (1 | scenario)
+##                    Df AIC BIC logLik deviance Chisq Chi Df Pr(>Chisq)
+## model.attitude      6 807 822   -398      795                        
+## model.attitude.int  7 807 824   -397      793     2      1       0.16
+```
+
+Hat die Interaktion das Modell verbessert? Wenn ein komplexeres Modell nicht signifikant besser als ein einfacheres Modell ist, bleiben wir bei dem einfacheren Modell! 
 
 # Zufällige Effekte
 
@@ -255,13 +323,26 @@ Haben sich die Koeffizienten oder Standardfehler (im Vergleich zu `model.attitud
 
 Hat dieses Modell ein signifikante besseres Fit als `model.attitude`? 
 
-CODE_BLOCK_HIER
+
+```r
+anova(model.attitude,model.attitude.int)
+```
+
+```
+## Data: stimmen
+## Models:
+## model.attitude: frequency ~ gender + attitude + (1 | subject) + (1 | scenario)
+## model.attitude.int: frequency ~ gender * attitude + (1 | subject) + (1 | scenario)
+##                    Df AIC BIC logLik deviance Chisq Chi Df Pr(>Chisq)
+## model.attitude      6 807 822   -398      795                        
+## model.attitude.int  7 807 824   -397      793     2      1       0.16
+```
 
 Könnten wir hier ein Intercepts-Only-Modell begründen? 
 
 Wir könnten -- sollten -- uns hier auch das Modell mit `gender` in der RE-Struktur anschauen, aber solche Berechnungen werden sehr schnell für eine Hausaufgabe zu aufwendig. Sie können sich an dieser Stelle schon vorstellen, wie kompliziert die RE-Struktur werden kann. Wir müssten für jeden zufälligen Effekt die maximale berechenbare Struktur finden und die einzelnen Berechnungen können schon ziemlich lange dauern. Das ist ein deutlicher Nachteil dieser Methode.   
 
-(Übrigens: Auch bei den RE-Struktur müssen wir berücksichtigen, ob die Interkation zu einer signifikanten Verbesserung führt. In der Regel nehmen wir allerdings keine RE-Struktur an, die komplexer als unsere FE-Struktur ist. Das heißt, wir schauen nicht, ob die Interaktion in der RE-Struktur was bringt, wenn wir die Interkation nicht in die fixen Effekte aufgenommen haben. )
+(Übrigens: Auch bei den RE-Struktur müssen wir berücksichtigen, ob die Interaktion zu einer signifikanten Verbesserung führt. In der Regel nehmen wir allerdings keine RE-Struktur an, die komplexer als unsere FE-Struktur ist. Das heißt, wir schauen nicht, ob die Interaktion in der RE-Struktur was bringt, wenn wir die Interaktion nicht in die fixen Effekte aufgenommen haben. )
 
 # CIs und Effects
 Auch für gemischte Modelle können wir Konfidenzintervalle berechnen. Der Befehl lautet -- wie bei `lm()` -- `confint()`. Allerdings ist die Berechnung deutlich aufwendiger, weshalb wir hier nur beispielweise sie für das einfachste Modell berechnen:
@@ -294,39 +375,61 @@ library(effects)
 ```
 
 ```
-## Error: there is no package called 'effects'
+## Loading required package: lattice
+## Loading required package: grid
+## Loading required package: colorspace
 ```
 
 ```r
 effects.attitude <- allEffects(model.attitude)
-```
-
-```
-## Error: konnte Funktion "allEffects" nicht finden
-```
-
-```r
 summary(effects.attitude)
 ```
 
 ```
-## Error: Fehler bei der Auswertung des Argumentes 'object' bei der Methodenauswahl
-## für Funktion 'summary': Fehler: Objekt 'effects.attitude' nicht gefunden
+##  model: frequency ~ gender + attitude
+## 
+##  gender effect
+## gender
+##     F     M 
+## 247.1 138.6 
+## 
+##  Lower 95 Percent Confidence Limits
+## gender
+##     F     M 
+## 220.1 111.6 
+## 
+##  Upper 95 Percent Confidence Limits
+## gender
+##     F     M 
+## 274.1 165.6 
+## 
+##  attitude effect
+## attitude
+##   inf   pol 
+## 203.2 183.5 
+## 
+##  Lower 95 Percent Confidence Limits
+## attitude
+##   inf   pol 
+## 182.0 162.2 
+## 
+##  Upper 95 Percent Confidence Limits
+## attitude
+##   inf   pol 
+## 224.5 204.8
 ```
 
 ```r
 plot(effects.attitude)
 ```
 
-```
-## Error: Objekt 'effects.attitude' nicht gefunden
-```
+![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
 
 Was ist der Unterschied zwischen den Konfidenzintervallen von `confint()` und von `allEffects()`? (D.h., woher kommt der Unterschied?) 
 
 # Intercepts und Slopes
 
-Ich habe am Anfang meiner Erklärung für gemischte Modelle erwähnt, dass wir sie eigentlich als Regression mit Korrektur für die verschiedenen Gruppierungen (Subjects, Items, usw.) betrachten können. Das können wir eigentlich auch direkt am Model sehen, indem wir den Befehl `coef()` nutzen.
+Ich habe am Anfang meiner Erklärung für gemischte Modelle erwähnt, dass wir sie eigentlich als Regression mit Korrektur für die verschiedenen Gruppierungen (Subjects, Items, usw.) betrachten können. Das können wir eigentlich auch direkt am Modell sehen, indem wir den Befehl `coef()` nutzen.
 
 Wir schauen uns zuerst ein Intercept-Only-Modell an: 
 
@@ -397,5 +500,5 @@ Diese Sichtweise -- Regression + Korrektur pro RE-Gruppierung -- war also nicht 
 - Bodo Winter, Sven Grawunder,   (2012) The Phonetic Profile of Korean Formal And Informal Speech Registers.  *Journal of Phonetics*  **40**  808-815  [10.1016/j.wocn.2012.08.006](http://dx.doi.org/10.1016/j.wocn.2012.08.006)
 
 # Lizenz
-Dieses Werk ist lizenziert unter einer CC-BY-NC-SA Lizenz.
+Dieses Werk ist nur für Prüfungszwecke bestimmt.
 
