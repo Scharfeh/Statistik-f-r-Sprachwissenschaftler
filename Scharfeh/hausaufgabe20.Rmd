@@ -133,7 +133,7 @@ Ist die Interaktion signifikant? Wir können uns den Koeffizienten anschauen, ab
 anova(model.attitude,model.attitude.int)
 ```
 
-Hat die Interkation das Modell verbessert? Wenn ein komplexeres Modell nicht signifikant besser als ein einfacheres Modell ist, bleiben wir bei dem einfacheren Modell! 
+Hat die Interaktion das Modell verbessert? Wenn ein komplexeres Modell nicht signifikant besser als ein einfacheres Modell ist, bleiben wir bei dem einfacheren Modell! 
 
 # Zufällige Effekte
 
@@ -148,7 +148,9 @@ Haben sich die Koeffizienten oder Standardfehler (im Vergleich zu `model.attitud
 
 Hat dieses Modell ein signifikante besseres Fit als `model.attitude`? 
 
-CODE_BLOCK_HIER
+```{r}
+anova(model.attitude,model.attitude.int)
+```
 
 Könnten wir hier ein Intercepts-Only-Modell begründen? 
 
